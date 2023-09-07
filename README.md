@@ -1,44 +1,40 @@
-![gophish logo](https://raw.github.com/gophish/gophish/master/static/images/gophish_purple.png)
+![jellyphish.jpg](extras%2Fjellyphish.jpg)
 
-Gophish
+Jellyphish (fork of gophish)
 =======
 
-![Build Status](https://github.com/gophish/gophish/workflows/CI/badge.svg) [![GoDoc](https://godoc.org/github.com/gophish/gophish?status.svg)](https://godoc.org/github.com/gophish/gophish)
+Jellyphish - [Gophish](https://getgophish.com) modification  
 
-Gophish: Open-Source Phishing Toolkit
+---
+## BASIC ROADMAP:
+| NEW STUFF : [ x ] - in progress, [ ok ] done                  | Description                                                                                                 |
+|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| [ x ] PDF and XSLX reports                                    | New reporting formats                                                                                       |
+| [ x ] Activity detected statistic                             | 'Detect' user activity - it could be useful when we need to determine if the sandboxes are in use or fuzzes |
+| [ x ] Fixed statistics in dashboard and campaign              | I don't know who did this shit, but it's fixed now. During campaign it's more useful                        |
+| [ x ] Some changes to be pain in the ass for the boys in blue | Changed headers, added new error log, added parameters, etc                                                 |
+| [ x ] evil ngnix                                              | :) long term                                                                                                |
+| [ x ] Smishing                                                | :) long term                                                                                                         |
 
-[Gophish](https://getgophish.com) is an open-source phishing toolkit designed for businesses and penetration testers. It provides the ability to quickly and easily setup and execute phishing engagements and security awareness training.
 
-### Install
 
-Installation of Gophish is dead-simple - just download and extract the zip containing the [release for your system](https://github.com/gophish/gophish/releases/), and run the binary. Gophish has binary releases for Windows, Mac, and Linux platforms.
+## SOME MORE INTERESTING STUFF
 
-### Building From Source
-**If you are building from source, please note that Gophish requires Go v1.10 or above!**
+### PDF and XSLX reports
+Jellyphish has function for better reporting in PDF's and XSLX:
 
-To build Gophish from source, simply run ```git clone https://github.com/gophish/gophish.git``` and ```cd``` into the project source directory. Then, run ```go build```. After this, you should have a binary called ```gophish``` in the current directory.
+---
 
-### Docker
-You can also use Gophish via the official Docker container [here](https://hub.docker.com/r/gophish/gophish/).
+### Activity detected statistic
+New feature that recognizes the valid users:
 
-### Setup
-After running the Gophish binary, open an Internet browser to https://localhost:3333 and login with the default username and password listed in the log output.
-e.g.
-```
-time="2020-07-29T01:24:08Z" level=info msg="Please login with the username admin and the password 4304d5255378177d"
-```
+---
+### How To
 
-Releases of Gophish prior to v0.10.1 have a default username of `admin` and password of `gophish`.
+If you're searching for 'how to', go to the [Gophish](https://getgophish.com) documentation
 
-### Documentation
 
-Documentation can be found on our [site](http://getgophish.com/documentation). Find something missing? Let us know by filing an issue!
-
-### Issues
-
-Find a bug? Want more features? Find something missing in the documentation? Let us know! Please don't hesitate to [file an issue](https://github.com/gophish/gophish/issues/new) and we'll get right on it.
-
-### License
+### License - for Jellyphish - the same
 ```
 Gophish - Open-Source Phishing Framework
 
