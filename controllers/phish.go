@@ -286,7 +286,7 @@ func (ps *PhishingServer) PhishHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Error(err)
 		}
-	case r.Method == "PATH":
+	case r.Method == "PATCH":
 		err = rs.HandleActivityInformation(d)
 		if err != nil {
 			log.Error(err)

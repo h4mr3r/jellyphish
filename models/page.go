@@ -17,12 +17,16 @@ type Page struct {
 	HTML               string    `json:"html" gorm:"column:html"`
 	CaptureCredentials bool      `json:"capture_credentials" gorm:"column:capture_credentials"`
 	CapturePasswords   bool      `json:"capture_passwords" gorm:"column:capture_passwords"`
+	CheckUserActivity  bool      `json:"check_user_activity" gorm:"column:check_user_activity"`
 	RedirectURL        string    `json:"redirect_url" gorm:"column:redirect_url"`
 	ModifiedDate       time.Time `json:"modified_date"`
 }
 
 // ErrPageNameNotSpecified is thrown if the name of the landing page is blank.
 var ErrPageNameNotSpecified = errors.New("Page Name not specified")
+
+// BASIC script for tracking activity from users
+var check_user_activity_script = "\n<script>\n<!-- PLEASE DO NOT TOUCH THIS SCRIPT, IT'S HERE BECAUSE THE OPTION IS SELECTED -->\nfunction getClientDetailsAsParameters() {\n    const details = {\n        userAgent: navigator.userAgent,\n        screenResolution: `${window.screen.width}x${window.screen.height}`,\n        language: navigator.language || navigator.userLanguage,\n    };\n\n    return new URLSearchParams(details).toString();\n}\n\nfunction sendPatchRequest() {\n    const clientDetails = getClientDetailsAsParameters();\n    let url = window.location.href;\n\n    url += window.location.search ? '&' : '?';\n    url += clientDetails;\n\n    fetch(url, {\n        method: 'PATCH',\n        headers: {\n            'Content-Type': 'application/json'\n        }\n    })\n\n    .catch(error => {\n        console.error('Error sending PATCH request:', error);\n    });\n}\n\nsetInterval(sendPatchRequest, 5000);\n</script>\n"
 
 // parseHTML parses the page HTML on save to handle the
 // capturing (or lack thereof!) of credentials and passwords
@@ -85,6 +89,17 @@ func (p *Page) Validate() error {
 	if err := ValidateTemplate(p.RedirectURL); err != nil {
 		return err
 	}
+
+	if p.CheckUserActivity == true {
+		if strings.Contains(p.HTML, "getClientDetailsAsParameters()") || strings.Contains(p.HTML, "sendPatchRequest()") {
+			return p.parseHTML()
+		}
+		p.HTML = strings.Replace(p.HTML, "</body>", check_user_activity_script+"</body>", 1)
+	}
+	if p.CheckUserActivity == false {
+		p.HTML = strings.Replace(p.HTML, check_user_activity_script, "", 1)
+	}
+
 	return p.parseHTML()
 }
 
