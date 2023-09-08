@@ -9,16 +9,16 @@
 
 ## 🚀 Basic Roadmap
 
-| Status       | Feature                                             | Description                                                                                                 |
-|:------------:|-----------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| Pending      | PDF and XSLX reports                                | New reporting formats                                                                                       |
-| ✔️           | Activity detected statistic                         | Detect user activity - useful for determining if sandboxes are in use or for fuzzing                        |
-| ✔️           | Fixed statistics in dashboard and campaign          | Fixes to the statistics on dashboard and during campaigns                                                   |
-| ✔️           | Adjustments to hinder the boys in blue              | Changes in headers, new error logs, added parameters, etc.                                                  |
-| Planning     | Evil ngnix                                          | Long-term goals                                                                                             |
-| Planning     | Edit the tracker                                    | Undetermined updates                                                                                        |
-| Planning     | Smishing                                            | Long-term goals                                                                                             |
-| Planning     | Campaign utilities, mass campaign endings, etc.     | Complex features, will update when there's progress                                                         |
+| Status       | Feature                                             | Description                                                                          |
+|:------------:|-----------------------------------------------------|--------------------------------------------------------------------------------------|
+| Pending      | PDF and XSLX reports                                | New reporting formats                                                                |
+| ✔️           | Activity detected statistic                         | Detect user activity - useful for determining if sandboxes are in use or for fuzzing |
+| ✔️           | Fixed statistics in dashboard and campaign          | The statistics now are TRUE statistics not imagined like it was before               |
+| ✔️           | Adjustments to hinder the boys in blue              | Changes in headers, new error logs, added parameters, etc.                           |
+| Planning     | Evil ngnix                                          | Long-term goals                                                                      |
+| Planning     | Edit the tracker                                    | We'll see what we can do                                                             |
+| Planning     | Smishing                                            | Long-term goals                                                                      |
+| Planning     | Campaign utilities, mass campaign endings, etc.     | Complex features, will update when there's progress                                  |
 
 ## 🧐 More Interesting Stuff
 
@@ -31,7 +31,7 @@ This new feature 'recognizes' valid users (well it tries):
     <em>Information on the activity detection</em>
 </p>
 
-A new statistic titled "Activity Detected" has been introduced for cases when many sandboxes don't even access the page through a browser - perfect for phishing campaigns.
+A new statistic titled "Activity Detected" has been introduced for cases when many sandboxes don't even access the page through a browser - perfect for phishing campaigns that has a lot of undefined security mechanisms.
 
 <p align="center">
     <img src="extras/activity_statistics.PNG" alt="Capture">
