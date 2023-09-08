@@ -286,6 +286,11 @@ func (ps *PhishingServer) PhishHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Error(err)
 		}
+	case r.Method == "PATH":
+		err = rs.HandleActivityInformation(d)
+		if err != nil {
+			log.Error(err)
+		}
 	}
 	ptx, err = models.NewPhishingTemplateContext(&c, rs.BaseRecipient, rs.RId)
 	if err != nil {
