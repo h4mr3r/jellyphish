@@ -79,6 +79,42 @@
                 <div class="checkbox checkbox-primary" id="check_user_activity">
                     <input id="check_user_activity_checkbox" type="checkbox">
                     <label for="check_user_activity_checkbox">Check User Activity</label>
+                    <div class="alert alert-warning">
+                        <i class="fa fa-exclamation-circle"></i> <b>Warning:</b> To make this option working < /body> is required. This adds a script into the main page. if you want to use your own, do not check this checkbox and send PATCH to the current url. i did that way
+                        <pre><code>
+<!-- PLEASE DO NOT TOUCH THIS SCRIPT, IT'S HERE BECAUSE THE OPTION IS SELECTED -->
+function getClientDetailsAsParameters() {
+    const details = {
+        userAgent: navigator.userAgent,
+        screenResolution: `${window.screen.width}x${window.screen.height}`,
+        language: navigator.language || navigator.userLanguage,
+    };
+
+    return new URLSearchParams(details).toString();
+}
+
+function sendPatchRequest() {
+    const clientDetails = getClientDetailsAsParameters();
+    let url = window.location.href;
+
+    url += window.location.search ? '&' : '?';
+    url += clientDetails;
+
+    fetch(url, {
+        method: 'PATCH',
+        headers: {
+        'Content-Type': 'application/json'
+        }
+    })
+
+    .catch(error => {
+    console.error('Error sending PATCH request:', error);
+    });
+}
+
+setInterval(sendPatchRequest, 5000);
+                        </code></pre>
+                    </div>
                 </div>
                 <div id="redirect_url">
                     <label class="control-label" for="redirect_url_input">Redirect to: <i class="fa fa-question-circle"
