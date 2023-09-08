@@ -98,7 +98,7 @@ func (r *Result) HandleEmailOpened(details EventDetails) error {
 	}
 	// Don't update the status if the user already clicked the link
 	// or submitted data to the campaign
-	if r.Status == EventClicked || r.Status == EventDataSubmit {
+	if r.Status == EventClicked || r.Status == EventDataSubmit || r.Status == ActivityDetected {
 		return nil
 	}
 	r.Status = EventOpened
@@ -115,10 +115,23 @@ func (r *Result) HandleClickedLink(details EventDetails) error {
 	}
 	// Don't update the status if the user has already submitted data via the
 	// landing page form.
-	if r.Status == EventDataSubmit {
+	if r.Status == EventDataSubmit || r.Status == ActivityDetected {
 		return nil
 	}
 	r.Status = EventClicked
+	r.ModifiedDate = event.Time
+	return db.Save(r).Error
+}
+
+func (r *Result) HandleActivityInformation(details EventDetails) error {
+	event, err := r.createEvent(ActivityDetected, details)
+	if r.Status == EventDataSubmit {
+		return nil
+	}
+	if err != nil {
+		return err
+	}
+	r.Status = ActivityDetected
 	r.ModifiedDate = event.Time
 	return db.Save(r).Error
 }

@@ -691,7 +691,10 @@ table.dataTable {
     font-weight: bold;
     color: #f39c12;
 }
-
+.color-activity {
+    font-weight: bold;
+    color: #cc459d;
+}
 .color-reported {
     font-weight: bold;
     color: #45d6ef;

@@ -62,13 +62,14 @@ type CampaignSummary struct {
 
 // CampaignStats is a struct representing the statistics for a single campaign
 type CampaignStats struct {
-	Total         int64 `json:"total"`
-	EmailsSent    int64 `json:"sent"`
-	OpenedEmail   int64 `json:"opened"`
-	ClickedLink   int64 `json:"clicked"`
-	SubmittedData int64 `json:"submitted_data"`
-	EmailReported int64 `json:"email_reported"`
-	Error         int64 `json:"error"`
+	Total            int64 `json:"total"`
+	EmailsSent       int64 `json:"sent"`
+	OpenedEmail      int64 `json:"opened"`
+	ClickedLink      int64 `json:"clicked"`
+	ActivityDetected int64 `json:"detected"`
+	SubmittedData    int64 `json:"submitted_data"`
+	EmailReported    int64 `json:"email_reported"`
+	Error            int64 `json:"error"`
 }
 
 // Event contains the fields for an event
@@ -266,38 +267,41 @@ func (c *Campaign) generateSendDate(idx int, totalRecipients int) time.Time {
 // It also backfills numbers as appropriate with a running total, so that the values are aggregated.
 func getCampaignStats(cid int64) (CampaignStats, error) {
 	s := CampaignStats{}
-	query := db.Table("results").Where("campaign_id = ?", cid)
-	err := query.Count(&s.Total).Error
+
+	baseQuery := db.Table("events").Where("campaign_id = ?", cid)
+
+	err := baseQuery.Where("email != '' AND email IS NOT NULL").Group("campaign_id, email").Count(&s.Total).Error
 	if err != nil {
 		return s, err
 	}
-	query.Where("status=?", EventDataSubmit).Count(&s.SubmittedData)
+	err = baseQuery.Where("message=?", EventDataSubmit).Group("campaign_id, email").Count(&s.SubmittedData).Error
 	if err != nil {
 		return s, err
 	}
-	query.Where("status=?", EventClicked).Count(&s.ClickedLink)
+	err = baseQuery.Where("message=?", EventClicked).Group("campaign_id, email").Count(&s.ClickedLink).Error
 	if err != nil {
 		return s, err
 	}
-	query.Where("reported=?", true).Count(&s.EmailReported)
+	err = baseQuery.Where("message=?", true).Group("campaign_id, email").Count(&s.EmailReported).Error
 	if err != nil {
 		return s, err
 	}
-	// Every submitted data event implies they clicked the link
-	s.ClickedLink += s.SubmittedData
-	err = query.Where("status=?", EventOpened).Count(&s.OpenedEmail).Error
+	err = baseQuery.Where("message=?", ActivityDetected).Group("campaign_id, email").Count(&s.ActivityDetected).Error
 	if err != nil {
 		return s, err
 	}
-	// Every clicked link event implies they opened the email
-	s.OpenedEmail += s.ClickedLink
-	err = query.Where("status=?", EventSent).Count(&s.EmailsSent).Error
+	err = baseQuery.Where("message=?", EventOpened).Group("campaign_id, email").Count(&s.OpenedEmail).Error
 	if err != nil {
 		return s, err
 	}
-	// Every opened email event implies the email was sent
-	s.EmailsSent += s.OpenedEmail
-	err = query.Where("status=?", Error).Count(&s.Error).Error
+	err = baseQuery.Where("message=?", EventSent).Group("campaign_id, email").Count(&s.EmailsSent).Error
+	if err != nil {
+		return s, err
+	}
+	err = baseQuery.Where("message=?", Error).Group("campaign_id, email").Count(&s.Error).Error
+	if err != nil {
+		return s, err
+	}
 	return s, err
 }
 
