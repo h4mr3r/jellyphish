@@ -1,39 +1,54 @@
-![jellyphish.jpg](extras%2Fjellyphish.jpg)
+<p align="center">
+    <img src="extras/jellyphish.jpg" alt="Jellyphish Logo">
+</p>
 
-Jellyphish (fork of gophish)
-=======
-
-Jellyphish - [Gophish](https://getgophish.com) modification  
-
----
-## BASIC ROADMAP:
-| NEW STUFF : [ x ] - in progress, [ ok ] done                  | Description                                                                                                 |
-|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| [ x ] PDF and XSLX reports                                    | New reporting formats                                                                                       |
-| [ x ] Activity detected statistic                             | 'Detect' user activity - it could be useful when we need to determine if the sandboxes are in use or fuzzes |
-| [ x ] Fixed statistics in dashboard and campaign              | I don't know who did this shit, but it's fixed now. During campaign it's more useful                        |
-| [ x ] Some changes to be pain in the ass for the boys in blue | Changed headers, added new error log, added parameters, etc                                                 |
-| [ x ] evil ngnix                                              | :) long term                                                                                                |
-| [ x ] Smishing                                                | :) long term                                                                                                         |
-
-
-
-## SOME MORE INTERESTING STUFF
-
-### PDF and XSLX reports
-Jellyphish has function for better reporting in PDF's and XSLX:
+<h1 align="center">Jellyphish</h1>
+<h3 align="center">A modification of <a href="https://getgophish.com">Gophish</a></h3>
 
 ---
 
-### Activity detected statistic
-New feature that recognizes the valid users:
+## 🚀 Basic Roadmap
+
+| Status       | Feature                                             | Description                                                                                                 |
+|:------------:|-----------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| Pending      | PDF and XSLX reports                                | New reporting formats                                                                                       |
+| ✔️           | Activity detected statistic                         | Detect user activity - useful for determining if sandboxes are in use or for fuzzing                        |
+| ✔️           | Fixed statistics in dashboard and campaign          | Fixes to the statistics on dashboard and during campaigns                                                   |
+| ✔️           | Adjustments to hinder the boys in blue              | Changes in headers, new error logs, added parameters, etc.                                                  |
+| Planning     | Evil ngnix                                          | Long-term goals                                                                                             |
+| Planning     | Edit the tracker                                    | Undetermined updates                                                                                        |
+| Planning     | Smishing                                            | Long-term goals                                                                                             |
+| Planning     | Campaign utilities, mass campaign endings, etc.     | Complex features, will update when there's progress                                                         |
+
+## 🧐 More Interesting Stuff
+
+### Activity Detected Statistic
+This new feature 'recognizes' valid users (well it tries):
+
+<p align="center">
+    <img src="extras/activity_info.PNG" alt="Activity Info">
+    <br>
+    <em>Information on the activity detection</em>
+</p>
+
+A new statistic titled "Activity Detected" has been introduced for cases when many sandboxes don't even access the page through a browser - perfect for phishing campaigns.
+
+<p align="center">
+    <img src="extras/activity_statistics.PNG" alt="Capture">
+    <br>
+    <em>Note: Statistics now only show the unique events saved in the GOPHISH database</em>
+</p>
 
 ---
-### How To
 
-If you're searching for 'how to', go to the [Gophish](https://getgophish.com) documentation
+🚨 **Disclaimer**: I am not a programmer. If you have any tips or ideas, please reach out to me!
 
+---
 
+## 📚 How To
+For detailed instructions, please refer to the [Gophish documentation](https://getgophish.com).
+
+## 🔖 License
 ### License - for Jellyphish - the same
 ```
 Gophish - Open-Source Phishing Framework
