@@ -8,6 +8,8 @@ WHERE id IN (
         WHERE results.status = "Success"
                 AND events.message="Submitted Data"
                 AND results_tmp.email = events.email
+                AND events.first_name= results.first_name
+                AND events.last_name= results.last_name
                 AND results_tmp.campaign_id = events.campaign_id);
 
 UPDATE `results`
@@ -17,6 +19,8 @@ WHERE id IN (
         FROM (SELECT * FROM results) as results_tmp, events
         WHERE results_tmp.status = "Success"
                 AND events.message="Clicked Link"
+                AND events.first_name= results.first_name
+                AND events.last_name= results.last_name
                 AND results_tmp.email = events.email
                 AND results_tmp.campaign_id = events.campaign_id);
 

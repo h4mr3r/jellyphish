@@ -7,9 +7,11 @@ WHERE id IN (
 	SELECT results.id
 	FROM results, events
 	WHERE results.status = "Success"
-		AND events.message="Submitted Data"
-		AND results.email = events.email
-		AND results.campaign_id = events.campaign_id);
+      AND events.message="Clicked Link"
+      AND events.first_name= results.first_name
+      AND events.last_name= results.last_name
+      AND results.email = events.email
+      AND results.campaign_id = events.campaign_id);
 		
 UPDATE results 
 SET status = "Clicked Link" 
@@ -18,6 +20,8 @@ WHERE id IN (
 	FROM results, events
 	WHERE results.status = "Success"
 		AND events.message="Clicked Link"
+        AND events.first_name= results.first_name
+        AND events.last_name= results.last_name
 		AND results.email = events.email
 		AND results.campaign_id = events.campaign_id);
 
