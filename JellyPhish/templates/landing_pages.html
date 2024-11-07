@@ -84,32 +84,7 @@
                         <pre><code>
 <!-- PLEASE DO NOT TOUCH THIS SCRIPT, IT'S HERE BECAUSE THE OPTION IS SELECTED -->
 function getClientDetailsAsParameters() {
-    const details = {
-        userAgent: navigator.userAgent,
-        screenResolution: `${window.screen.width}x${window.screen.height}`,
-        language: navigator.language || navigator.userLanguage,
-    };
-
-    return new URLSearchParams(details).toString();
-}
-
-function sendPatchRequest() {
-    const clientDetails = getClientDetailsAsParameters();
-    let url = window.location.href;
-
-    url += window.location.search ? '&' : '?';
-    url += clientDetails;
-
-    fetch(url, {
-        method: 'PATCH',
-        headers: {
-        'Content-Type': 'application/json'
-        }
-    })
-
-    .catch(error => {
-    console.error('Error sending PATCH request:', error);
-    });
+    ...
 }
 
 setInterval(sendPatchRequest, 5000);

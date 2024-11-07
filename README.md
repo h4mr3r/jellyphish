@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="extras/jellyphish.jpg" alt="Jellyphish Logo">
+    <img src="JellyPhish/extras/jellyphish.jpg" alt="Jellyphish Logo">
 </p>
 
 <h1 align="center">Jellyphish</h1>
@@ -9,16 +9,15 @@
 
 ## 🚀 Basic Roadmap
 
-| Status       | Feature                                             | Description                                                            |
-|:------------:|-----------------------------------------------------|------------------------------------------------------------------------|
-| Pending      | PDF and XSLX reports                                | New reporting formats                                                  |
-| ✔️           | Activity detected statistic                         | Detect user activity - useful for determining if sandboxes are in use  |
-| ✔️           | Fixed statistics in dashboard and campaign          | The statistics now are TRUE statistics not imagined like it was before |
-| ✔️           | Adjustments to hinder the boys in blue              | Changes in headers, new error logs, added parameters, etc.             |
-| Planning     | Evil ngnix                                          | Long-term goals                                                        |
-| Planning     | Edit the tracker                                    | We'll see what we can do                                               |
-| Planning     | Smishing                                            | Long-term goals                                                        |
-| Planning     | Campaign utilities, mass campaign endings, etc.     | Complex features, will update when there's progress                    |
+|   Status    | Feature                                         | Description                                                            |
+|:-----------:|-------------------------------------------------|------------------------------------------------------------------------|
+|     ✔️      | XSLX reports                                    | Reporting feature                                                      |
+|     ✔️      | Activity detected statistic                     | Detect user activity - useful for determining if sandboxes are in use  |
+|     ✔️      | Fixed statistics in dashboard and campaign      | The statistics now are TRUE statistics not imagined like it was before |
+|     ✔️      | Adjustments to hinder the boys in blue          | Changes in headers, new error logs, added parameters, etc.             |
+|  Planning   | Evil ngnix                                      | Long-term goals                                                        |
+|  Planning   | Edit the tracker                                | We'll see what we can do                                               |
+| In progress | Smishing                                        | Long-term goals                                                        |
 
 ## 🧐 More Interesting Stuff
 
@@ -26,7 +25,7 @@
 This new feature 'recognizes' valid users (well it tries):
 
 <p align="center">
-    <img src="extras/activity_info.PNG" alt="Activity Info">
+    <img src="JellyPhish/extras/activity_info.PNG" alt="Activity Info">
     <br>
     <em>Information on the activity detection</em>
 </p>
@@ -34,7 +33,7 @@ This new feature 'recognizes' valid users (well it tries):
 A new statistic titled "Activity Detected" has been introduced for cases when many sandboxes don't even access the page through a browser - perfect for phishing campaigns that has a lot of undefined security mechanisms.
 
 <p align="center">
-    <img src="extras/activity_statistics.PNG" alt="Capture">
+    <img src="JellyPhish/extras/activity_statistics.PNG" alt="Capture">
     <br>
     <em>Note: Statistics now only show the unique events saved in the GOPHISH database</em>
 </p>
