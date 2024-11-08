@@ -22,18 +22,19 @@
 ## 🧐 More Interesting Stuff
 
 ### Activity Detected Statistic
-This new feature 'recognizes' valid users (well it tries):
-
-<p align="center">
-    <img src="JellyPhish/extras/activity_info.PNG" alt="Activity Info">
-    <br>
-    <em>Information on the activity detection</em>
-</p>
 
 A new statistic titled "Activity Detected" has been introduced for cases when many sandboxes don't even access the page through a browser - perfect for phishing campaigns that has a lot of undefined security mechanisms.
 
 <p align="center">
     <img src="JellyPhish/extras/activity_statistics.PNG" alt="Capture">
+    <br>
+    <em>Note: Statistics now only show the unique events saved in the GOPHISH database</em>
+</p>
+
+### JellyReporter
+Use the python script to generate your reports,
+<p align="center">
+    <img src="JellyPhish/extras/report_sample.png" alt="Capture">
     <br>
     <em>Note: Statistics now only show the unique events saved in the GOPHISH database</em>
 </p>
